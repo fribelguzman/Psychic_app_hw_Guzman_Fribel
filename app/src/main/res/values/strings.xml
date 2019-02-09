@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Psychic_App_HW_Guzman_Fribel</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="theme_array">
+        <item>Dali</item>
+        <item>Kush</item>
+        <item>Loli</item>
+
+    </string-array>
+
+</resources>
