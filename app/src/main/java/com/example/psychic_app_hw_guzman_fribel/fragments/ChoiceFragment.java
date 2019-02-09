@@ -1,4 +1,4 @@
-package com.example.psychic_app_hw_guzman_fribel;
+package com.example.psychic_app_hw_guzman_fribel.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import com.example.psychic_app_hw_guzman_fribel.NavigationInterface;
+import com.example.psychic_app_hw_guzman_fribel.R;
 
 import java.util.List;
 
@@ -27,7 +30,6 @@ public class ChoiceFragment extends Fragment {
     public ChoiceFragment() {
 
     }
-
 
     public static ChoiceFragment newInstance(List<Integer> listOfDrawables) {
         ChoiceFragment fragment = new ChoiceFragment();
@@ -61,11 +63,6 @@ public class ChoiceFragment extends Fragment {
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_main, container, false);
         return rootView;
-    }
-
-
-    public void onButtonPressed(Uri uri) {
-
     }
 
     @Override

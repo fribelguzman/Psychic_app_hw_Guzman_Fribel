@@ -3,6 +3,9 @@ package com.example.psychic_app_hw_guzman_fribel;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.psychic_app_hw_guzman_fribel.fragments.ChoiceFragment;
+import com.example.psychic_app_hw_guzman_fribel.fragments.MainFragment;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationInterface {
@@ -15,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements NavigationInterfa
         MainFragment mainFragment = MainFragment.newInstance();
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.main, mainFragment)
+                .replace(R.id.main_container, mainFragment)
                 .addToBackStack("next")
                 .commit();
     }
@@ -24,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements NavigationInterfa
     public void showChoiceFragment(List<Integer> listOfDrawables) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.main, ChoiceFragment.newInstance(listOfDrawables))
+                .replace(R.id.main_container, ChoiceFragment.newInstance(listOfDrawables))
                 .addToBackStack("choice")
                 .commit();
 
