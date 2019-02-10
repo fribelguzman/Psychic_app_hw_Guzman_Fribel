@@ -3,6 +3,8 @@ package com.example.psychic_app_hw_guzman_fribel.fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +27,7 @@ public class ChoiceFragment extends Fragment {
     private ImageView image4;
 
 
-    private NavigationInterface mListener;
+    private static NavigationInterface mListener;
 
     public ChoiceFragment() {
 
@@ -33,7 +35,6 @@ public class ChoiceFragment extends Fragment {
 
     public static ChoiceFragment newInstance(List<Integer> listOfDrawables) {
         ChoiceFragment fragment = new ChoiceFragment();
-
         photos = listOfDrawables;
 
 
@@ -42,9 +43,15 @@ public class ChoiceFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        rootView = inflater.inflate(R.layout.fragment_choice, container, false);
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
             image1 = rootView.findViewById(R.id.image1);
             image2 = rootView.findViewById(R.id.image2);
@@ -54,15 +61,7 @@ public class ChoiceFragment extends Fragment {
             image1.setImageDrawable(getResources().getDrawable(photos.get(0)));
             image2.setImageDrawable(getResources().getDrawable(photos.get(1)));
             image3.setImageDrawable(getResources().getDrawable(photos.get(2)));
-            image1.setImageDrawable(getResources().getDrawable(photos.get(0)));
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_main, container, false);
-        return rootView;
+            image4.setImageDrawable(getResources().getDrawable(photos.get(3)));
     }
 
     @Override

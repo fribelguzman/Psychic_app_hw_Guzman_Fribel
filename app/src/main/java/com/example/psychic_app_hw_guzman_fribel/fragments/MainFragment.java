@@ -26,7 +26,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
     private Spinner spinner;
     private List<Integer> photos;
     private Button submit;
-    private NavigationInterface mListener;
+    private static NavigationInterface mListener;
     private int selectedPosition;
 
     public MainFragment() {
@@ -43,9 +43,8 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_main, container, false);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         submit = rootView.findViewById(R.id.submit_button);
         spinner = rootView.findViewById(R.id.spinner_theme);
@@ -70,6 +69,12 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
                 }
             }
         });
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        rootView = inflater.inflate(R.layout.fragment_main, container, false);
         return rootView;
     }
 
@@ -83,20 +88,6 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         selectedPosition = position;
-//        switch (position) {
-//            case 0:
-//                photos = Arrays.asList(R.drawable.dali1, R.drawable.dali2, R.drawable.dali3, R.drawable.dali4);
-//                //mListener.showChoiceFragment(photos);
-//                break;
-//            case 1:
-//                photos = Arrays.asList(R.drawable.kush1, R.drawable.kush2, R.drawable.kush3, R.drawable.kush4);
-//                mListener.showChoiceFragment(photos);
-//                break;
-//            case 2:
-//                photos = Arrays.asList(R.drawable.loli1, R.drawable.loli2, R.drawable.loli3, R.drawable.loli4);
-//                //mListener.showChoiceFragment(photos);
-//                break;
-//        }
     }
 
 
