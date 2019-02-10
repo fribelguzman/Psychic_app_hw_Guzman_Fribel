@@ -8,21 +8,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.psychic_app_hw_guzman_fribel.NavigationInterface;
 import com.example.psychic_app_hw_guzman_fribel.R;
 
 
 public class ResultFragment extends Fragment {
 
-    private OnFragmentInteractionListener mListener;
+    private static NavigationInterface mListener;
 
     public ResultFragment() {
 
     }
 
 
-    public static ResultFragment newInstance(String param1, String param2) {
+    public static ResultFragment newInstance() {
         ResultFragment fragment = new ResultFragment();
-        Bundle args = new Bundle();
+
 
         return fragment;
     }
@@ -43,17 +44,12 @@ public class ResultFragment extends Fragment {
     }
 
 
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof NavigationInterface) {
+            mListener = (NavigationInterface) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");

@@ -27,6 +27,7 @@
     <ImageView
         android:id="@+id/image1"
         style="@style/ImageViewStyle"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:padding="5dp"
         app:layout_constraintEnd_toStartOf="@+id/image2"
@@ -38,6 +39,7 @@
     <ImageView
         android:id="@+id/image2"
         style="@style/ImageViewStyle"
+        android:layout_marginTop="12dp"
         android:padding="5dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +61,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image1"
-        app:layout_constraintVertical_bias="0.07999998"
+        app:layout_constraintVertical_bias="0.075"
         tools:src="@tools:sample/avatars" />
 
 
@@ -75,7 +77,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/image3"
         app:layout_constraintTop_toBottomOf="@+id/image2"
-        app:layout_constraintVertical_bias="0.050000012"
+        app:layout_constraintVertical_bias="0.067"
         tools:src="@tools:sample/avatars" />
 
     <View
@@ -93,5 +95,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.232" />
+
 
 </android.support.constraint.ConstraintLayout>

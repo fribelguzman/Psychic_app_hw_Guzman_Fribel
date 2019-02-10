@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.example.psychic_app_hw_guzman_fribel.fragments.ChoiceFragment;
 import com.example.psychic_app_hw_guzman_fribel.fragments.MainFragment;
+import com.example.psychic_app_hw_guzman_fribel.fragments.ResultFragment;
 
 import java.util.List;
 
@@ -36,7 +37,12 @@ public class MainActivity extends AppCompatActivity implements NavigationInterfa
     }
 
     @Override
-    public void showResultFragment(int choice, int correct) {
+    public void showResultFragment() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.main_container, ResultFragment.newInstance())
+                .addToBackStack("choice")
+                .commit();
 
     }
 }

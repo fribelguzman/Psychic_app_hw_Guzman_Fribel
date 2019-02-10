@@ -6,7 +6,7 @@ public interface NavigationInterface {
 
     void showChoiceFragment(List<Integer> listOfDrawables);
 
-    void showResultFragment(int choice, int correct);
+    void showResultFragment();
 
 
 
