@@ -37,12 +37,11 @@ public class MainActivity extends AppCompatActivity implements NavigationInterfa
     }
 
     @Override
-    public void showResultFragment() {
+    public void showResultFragment(int cpuChoice, int userChoice) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.main_container, ResultFragment.newInstance())
+                .replace(R.id.main_container, ResultFragment.newInstance(cpuChoice,userChoice))
                 .addToBackStack("choice")
                 .commit();
-
     }
 }

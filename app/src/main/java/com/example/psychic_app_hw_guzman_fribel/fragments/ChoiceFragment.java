@@ -9,25 +9,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.psychic_app_hw_guzman_fribel.NavigationInterface;
 import com.example.psychic_app_hw_guzman_fribel.R;
+import com.example.psychic_app_hw_guzman_fribel.database.GuessDatabaseHelper;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-
-public class ChoiceFragment extends Fragment {
-    private View rootView;
-
+public class ChoiceFragment extends Fragment implements View.OnClickListener {
+    private static NavigationInterface listener;
     private static List<Integer> photos;
-    private ImageView image1;
-    private ImageView image2;
-    private ImageView image3;
-    private ImageView image4;
+    //be more specific so you can identify things later on
+    private ImageView imageView;
+    private ImageView imageView2;
+    private ImageView imageView3;
+    private ImageView imageView4;
+    private int userChoice;
+    private int cpuChoice;
 
-    private static List<ImageView> images;
-    private static NavigationInterface mListener;
 
     public ChoiceFragment() {
 
@@ -40,54 +41,74 @@ public class ChoiceFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //get a random choice
+        cpuChoice = new Random().nextInt(photos.size() - 1);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_choice, container, false);
-        return rootView;
+        return inflater.inflate(R.layout.fragment_choice, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        image1 = rootView.findViewById(R.id.image1);
-        image2 = rootView.findViewById(R.id.image2);
-        image3 = rootView.findViewById(R.id.image3);
-        image4 = rootView.findViewById(R.id.image4);
+        imageView = view.findViewById(R.id.image1);
+        imageView2 = view.findViewById(R.id.image2);
+        imageView3 = view.findViewById(R.id.image3);
+        imageView4 = view.findViewById(R.id.image4);
 
-        image1.setImageDrawable(getResources().getDrawable(photos.get(0)));
-        image2.setImageDrawable(getResources().getDrawable(photos.get(1)));
-        image3.setImageDrawable(getResources().getDrawable(photos.get(2)));
-        image4.setImageDrawable(getResources().getDrawable(photos.get(3)));
+        imageView.setImageDrawable(getResources().getDrawable(photos.get(0)));
+        imageView2.setImageDrawable(getResources().getDrawable(photos.get(1)));
+        imageView3.setImageDrawable(getResources().getDrawable(photos.get(2)));
+        imageView4.setImageDrawable(getResources().getDrawable(photos.get(3)));
 
-        images= new ArrayList<>();
-       images.add(image1);
-        images.add(image2);
-        images.add(image3);
-        images.add(image4);
+        imageView.setOnClickListener(this);
+        imageView2.setOnClickListener(this);
+        imageView3.setOnClickListener(this);
+        imageView4.setOnClickListener(this);
+    }
 
-rootView.setOnClickListener(new View.OnClickListener() {
+    //nice
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof NavigationInterface) {
+            listener = (NavigationInterface) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + "Parent must implement OnFragmentInteractionListener");
+        }
+    }
+
     @Override
     public void onClick(View v) {
-        mListener.showResultFragment();
+        switch (v.getId()) {
+            case R.id.image1:
+                //assign the user's choice
+                userChoice = 0;
+                break;
+            case R.id.image2:
+                userChoice = 1;
+                break;
+            case R.id.image3:
+                userChoice = 2;
+                break;
+            case R.id.image4:
+                userChoice = 3;
+                break;
+        }
+        //pass both choices to the ResultFragment
+        listener.showResultFragment(cpuChoice, userChoice);
     }
-});
-
-}
-
-            @Override
-            public void onDetach() {
-                super.onDetach();
-                mListener = null;
-            }
-            @Override
-            public void onAttach(Context context) {
-                super.onAttach(context);
-                if (context instanceof NavigationInterface) {
-                    mListener = (NavigationInterface) context;
-                } else {
-                    throw new RuntimeException(context.toString()
-                            + " must implement OnFragmentInteractionListener");
-                }
-            }
 }

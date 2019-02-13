@@ -1,32 +1,15 @@
 package com.example.psychic_app_hw_guzman_fribel.database;
 
+//this is where things can start to go wrong and you can confuse yourself further. We have to think about what data is relevant so we can model our data classes as best we can. What data does your database need? How can you identify the appropriate data and how can you create your database to be easier to use? Since a choice can be either right or wrong, a guess should just consist of one value. If we're not gonna use anything else then we don't need any other information about the option chosen.
 public class GuessModel {
-    private String chosen;
-    private int guessedRight;
-    private int guessedWrong;
+    private int guess;
 
-    public String getchosen() {
-        return chosen;
+    public GuessModel(int guess) {
+        this.guess = guess;
     }
 
-    public void setchosen(String chosen) {
-        this.chosen = chosen;
-    }
-
-    public int getGuessedRight() {
-        return guessedRight;
-    }
-
-    public void setGuessedRight(int guessesRight) {
-        this.guessedRight = guessedRight;
-    }
-
-    public int getGuessedWrong() {
-        return guessedWrong;
-    }
-
-    public void setGuessedWrong(int guessedWrong) {
-        this.guessedWrong = guessedWrong;
+    public int guess() {
+        return guess;
     }
 }
 
